@@ -15,12 +15,15 @@ y <- rweibull(100, 1, 5)
 # Null Hypothesis:  The data are normally distributed
 # Alternative Hypohtesis:  The data are not normally distributed
 
-# Note:  susceptible to extreme values.  In these cases, try Shapiro-Wilk Test
-
 ad.test(x)  # the normally distributed x dataset has p-value greater than 0.05
 
 ad.test(y)  # the weibull distributed y dataset has p-value less than 0.05
+# Note:  the anderson-darling test is susceptible to extreme values.  In these cases, try Shapiro-Wilk Test
 
+# SHAPIRO-WILK NORMALITY TEST
+
+shapiro.test(x)
+shapiro.test(y)
 
 # NORMAL PROBABILITY / QQ PLOT
 qqnorm(x)
@@ -28,6 +31,9 @@ qqline(x, col = "red")  # the normally distributed data fall on the line
 
 qqnorm(y)
 qqline(y, col = "blue") # the non-normal data display significant curvature
+
+
+
 
 
 
