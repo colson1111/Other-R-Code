@@ -8,7 +8,6 @@ num_cores = max(parallel::detectCores() - 1, 1)
 #Register Parallel Globally
 doParallel::registerDoParallel(cores = num_cores)
 
-
 # Generate fake data
 tree.df <- data.frame(species = rep(c(1:100), each = 100000), girth = runif(100000, 7, 40))
 tree.df$volume <- tree.df$species / 10 + 5 * tree.df$girth + rnorm(100000, 0, 3)
@@ -29,7 +28,6 @@ time <- end - start
 #Stop Parallel Execution (Acquisition parallels the forest rather than type)
 doParallel::stopImplicitCluster()
 
-
 # run foreach without parallelization
 start <- Sys.time()
 fits <- foreach(i = species, .combine = rbind) %do% {
@@ -39,7 +37,3 @@ fits <- foreach(i = species, .combine = rbind) %do% {
 }
 end <- Sys.time()
 time <- end - start
-
-
-
-
